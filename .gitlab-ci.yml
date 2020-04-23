@@ -16,7 +16,7 @@ review-deploy:
     - export HOST=${CI_ENVIRONMENT_SLUG}.xdevops.ci.yourlabs.io
     - bigsudo
       yourlabs.compose
-      image=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+      compose_django_image=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
       pull=no
       compose=docker-compose.yml,docker-compose.ephemeral.yml
       project=$CI_ENVIRONMENT_SLUG
@@ -52,7 +52,7 @@ deploy:
     - export PROTO=https
     - bigsudo
       yourlabs.compose
-      image=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+      compose_django_image=$CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
       pull=no
       compose=docker-compose.yml,docker-compose.persistent.yml
       home=/home/xdevops
