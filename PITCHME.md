@@ -1,11 +1,8 @@
-## eXtreme DevOps with Traefik
-
-### by J. Pic
-### for Traefik Online Meetup
+---?image=img/hero.png
 
 ---
 
-## Who
+## Call me J
 
 - 1995: first C program
 - 2000: first "other human being giving a shit about my code"
