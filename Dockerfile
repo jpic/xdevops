@@ -14,11 +14,8 @@ COPY . /app/
 RUN pip install django
 
 USER app
-RUN xdevops collectstatic --noinput
-RUN ls -l /app/static
-RUN find /app/static
-RUN gzip -k -6 $(find /app/static -type f)
-CMD /usr/bin/dumb-init bash -c "until djcli dbcheck; do sleep 1; done && xdevops migrate --noinput && uwsgi \
+RUN ./manage.py collectstatic --noinput
+CMD /usr/bin/dumb-init bash -c "until djcli dbcheck; do sleep 1; done && ./manage.py migrate --noinput && uwsgi \
   --spooler=/app/spool \
   --spooler-processes 3 \
   --http-socket=0.0.0.0:8000 \
@@ -42,5 +39,4 @@ CMD /usr/bin/dumb-init bash -c "until djcli dbcheck; do sleep 1; done && xdevops
   --mime-file /etc/mime.types \
   --thunder-lock \
   --offload-threads '%k' \
-  --static-map $STATIC_URL=$STATIC_ROOT \
-  --static-gzip-all"
+  --static-map $STATIC_URL=$STATIC_ROOT"
