@@ -11,9 +11,8 @@ review-deploy:
     name: test/$CI_COMMIT_REF_NAME
     url: http://${CI_ENVIRONMENT_SLUG}.xdevops.ci.yourlabs.io
     on_stop: review-stop
-  before_script:
-    - mkdir -p ~/.ssh; echo "$ssh_key" > ~/.ssh/id_rsa; echo "$ssh_fingerprints" > ~/.ssh/known_hosts; chmod 700 ~/.ssh; chmod 600 ~/.ssh/*
   script:
+    - mkdir -p ~/.ssh; echo "$ssh_key" > ~/.ssh/id_rsa; echo "$ssh_fingerprints" > ~/.ssh/known_hosts; chmod 700 ~/.ssh; chmod 600 ~/.ssh/*
     - export HOST=${CI_ENVIRONMENT_SLUG}.xdevops.ci.yourlabs.io
     - bigsudo
       yourlabs.compose
@@ -47,9 +46,8 @@ deploy:
   environment:
     name: demo
     url: https://xdevops.ci.yourlabs.io
-  before_script:
-     mkdir -p ~/.ssh; echo "$ssh_key" > ~/.ssh/id_rsa; echo "$ssh_fingerprints" > ~/.ssh/known_hosts; chmod 700 ~/.ssh; chmod 600 ~/.ssh/*
   script:
+    - mkdir -p ~/.ssh; echo "$ssh_key" > ~/.ssh/id_rsa; echo "$ssh_fingerprints" > ~/.ssh/known_hosts; chmod 700 ~/.ssh; chmod 600 ~/.ssh/*
     - export HOST=xdevops.ci.yourlabs.io
     - export PROTO=https
     - bigsudo
