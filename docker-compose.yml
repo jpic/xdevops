@@ -1,0 +1,25 @@
+version: '3.5'
+services:
+  git:
+    image: yourlabs/yourlab-git
+    labels:
+    - "traefik.enable=true"
+
+  postgres:
+    image: postgres
+    environment:
+    - POSTGRES_DB=xdevops
+    - POSTGRES_USER=xdevops
+    - POSTGRES_PASSWORD=xdevops
+    volumes:
+    - /var/lib/postgresql/data
+
+  django:
+    image: yourlabs/yourlab
+    environment:
+    - DB_URI=postgres
+    - DB_NAME=xdevops
+    - DB_USER=xdevops
+    - DB_PASS=xdevops
+    - CI_COMMIT_REF_SLUG
+

@@ -1,0 +1,23 @@
+version: "3.5"
+services:
+  django:
+    networks:
+    - default
+    - web
+    environment:
+    - HOST
+    - PROTO=http
+    labels:
+    - "traefik.enable=true"
+    - "traefik.port=8000"
+    - "traefik.docker.network=web"
+    - "traefik.http.routers.xdevops-${CI_COMMIT_REF_SLUG}.entryPoints=web"
+    - "traefik.http.routers.xdevops-${CI_COMMIT_REF_SLUG}.rule=Host(`$HOST`)"
+
+  postgres:
+    networks:
+    - default
+
+networks:
+  web:
+    external: true

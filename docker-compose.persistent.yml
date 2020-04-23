@@ -1,0 +1,30 @@
+version: "3.5"
+services:
+  django:
+    restart: always
+    environment:
+    - HOST
+    - PROTO=https
+    networks:
+    - web
+    - default
+    labels:
+    - "traefik.enable=true"
+    - "traefik.port=8000"
+    - "traefik.docker.network=web"
+    - "traefik.http.routers.xdevops-${CI_COMMIT_REF_SLUG}.entryPoints=web,websecure"
+    - "traefik.http.routers.xdevops-${CI_COMMIT_REF_SLUG}.rule=Host(`$HOST`)"
+    - "traefik.http.routers.xdevops-${CI_COMMIT_REF_SLUG}.tls=true"
+    - "traefik.http.routers.xdevops-${CI_COMMIT_REF_SLUG}.tls.certResolver=leresolver"
+
+  postgres:
+    restart: always
+    volumes:
+    - ./data/postgres:/var/lib/postgresql/data
+    labels:
+      - "io.yourlabs.compose.mkdir=./dump,./data/postgres:999:999:0700"
+
+networks:
+  web:
+    external: true
+
