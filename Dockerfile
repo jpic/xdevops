@@ -7,11 +7,11 @@ ENV PYTHONIOENCODING=UTF-8 PYTHONUNBUFFERED=1
 EXPOSE 8000
 
 RUN apk update && apk --no-cache upgrade && apk --no-cache add gettext shadow python3 py3-pip py3-psycopg2 uwsgi-python uwsgi-http uwsgi-spooler dumb-init bash git curl
+RUN pip install django
 
 RUN useradd -md /app app
 WORKDIR /app
 COPY . /app/
-RUN pip install django
 
 USER app
 RUN ./manage.py collectstatic --noinput
