@@ -1,8 +1,8 @@
----?image=img/hero.png
+---?image=assets/img/hero.png
 
 ---
 
-## Call me J
+## Who
 
 - 1995: first C program
 - 2000: first "other human being giving a shit about my code"
@@ -147,13 +147,13 @@ staging:
 
 ## GitLab job page
 
-![Deployment](img/gitlab-job-deployment.png)
+![Deployment](assets/img/gitlab-job-deployment.png)
 
 ---
 
 ## GitLab environment list
 
-![Deployment](img/gitlab-environments-list.png)
+![Deployment](assets/img/gitlab-environments-list.png)
 
 ---
 
@@ -188,7 +188,7 @@ review-deploy:
 
 ## Pipeline
 
-![Pipeline](img/gitlab-pull-request.png)
+![Pipeline](assets/img/gitlab-pull-request.png)
 
 Note:
 - Pushing to testops branch and openning a merge request
@@ -198,13 +198,13 @@ Note:
 
 ## Review deployment
 
-![View app](img/gitlab-review-link.png)
+![View app](assets/img/gitlab-review-link.png)
 
 ---
 
 ## Deployment stop button
 
-![View app](img/gitlab-review-stop.png)
+![View app](assets/img/gitlab-review-stop.png)
 
 Note:
 - The stop button may be useful to destroy and re-create a deployment
@@ -215,13 +215,13 @@ Note:
 
 ## Deleting the branch
 
-![View app](img/gitlab-branch-delete.png)
+![View app](assets/img/gitlab-branch-delete.png)
 
 ---
 
 ## Starts the on_stop job
 
-![View app](img/gitlab-review-stop-running.png)
+![View app](assets/img/gitlab-review-stop-running.png)
 
 ---
 
@@ -392,4 +392,4 @@ done
 
 ## Demo
 
-![Demo](img/demo.png)
+![Demo](assets/img/demo.png)
